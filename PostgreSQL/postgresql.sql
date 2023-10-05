@@ -22,7 +22,7 @@ BEGIN
     FROM cte_films_with_actor;
 
     RETURN film_count;
-end
+END
 $$;
 
 SELECT get_film_count_by_actor('Penelope', 'Guiness');

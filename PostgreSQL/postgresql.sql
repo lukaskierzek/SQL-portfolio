@@ -1,6 +1,6 @@
-------------------------------------------------------------------
--- Return the numbers of films by actor's first name and last name
-------------------------------------------------------------------
+--------------------------------------------------------------------
+-- Return the number of films by actor's first name and last name --
+--------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION get_film_count_by_actor(p_actor_first_name TEXT, p_actor_last_name TEXT)
     RETURNS INT

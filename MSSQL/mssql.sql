@@ -61,7 +61,3 @@ GO;
 -- |Electric Bikes     |24           |
 -- |Cyclocross Bicycles|10           |
 -- +-------------------+-------------+
-
-
-
-

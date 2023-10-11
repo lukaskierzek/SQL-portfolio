@@ -1,6 +1,6 @@
--------------------------------------------------
--- Return the number of customers by the State --
--------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
+-- Return the number of customers by the State ------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
 CREATE OR ALTER FUNCTION get_customer_number_by_state(@state_name VARCHAR(2))
     RETURNS INT
@@ -25,3 +25,43 @@ SELECT @ReturnCustomersNumberByState AS ReturnCustomersNumberByState
 GO
 -- Result for OR: 0
 -- Result for TX: 142
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Return a category name with the number of products -----------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
+
+CREATE PROCEDURE CategoriesWithCount
+AS
+BEGIN
+    SET NOCOUNT ON;
+    WITH cte_categories_with_cout (CategoryName, CategoryCount) AS (
+        SELECT c.category_name, count(*) CategoryCount
+        FROM BikeStores.production.products p
+        INNER JOIN BikeStores.production.categories c ON c.category_id = p.category_id
+        GROUP BY c.category_name
+    )
+    SELECT *
+    FROM cte_categories_with_cout
+    ORDER BY CategoryCount DESC;
+END
+GO
+
+EXEC CategoriesWithCount
+GO;
+
+-- Result:
+-- +-------------------+-------------+
+-- |CategoryName       |CategoryCount|
+-- +-------------------+-------------+
+-- |Cruisers Bicycles  |78           |
+-- |Mountain Bikes     |60           |
+-- |Road Bikes         |60           |
+-- |Children Bicycles  |59           |
+-- |Comfort Bicycles   |30           |
+-- |Electric Bikes     |24           |
+-- |Cyclocross Bicycles|10           |
+-- +-------------------+-------------+
+
+
+
+

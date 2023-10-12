@@ -30,7 +30,7 @@ GO
 -- Return a category name with the number of products -----------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------
 
-CREATE PROCEDURE CategoriesWithProductCount
+CREATE OR ALTER PROCEDURE CategoriesWithProductCount
 AS
 BEGIN
     SET NOCOUNT ON;

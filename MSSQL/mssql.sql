@@ -63,7 +63,7 @@ GO;
 -- +-------------------+------------+
 
 -----------------------------------------------------------------------------------------------------------------------
--- View with amount of order_status in particular year, store and state -----------------------------------------------
+-- View with amount of order_status in particular year, store and state in the state of Texas -------------------------
 -----------------------------------------------------------------------------------------------------------------------
 
 CREATE OR ALTER VIEW sales.amount_order_status

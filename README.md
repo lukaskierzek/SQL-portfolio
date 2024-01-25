@@ -6,7 +6,7 @@ Portfolio demonstrating my knowledge of sql
 
 To demonstrate my MS SQL knowledge, I use
 the [bikestore](https://www.sqlservertutorial.net/sql-server-sample-database/) database.
-[Open](MSSQL/mssql.sql) sql file with postgresql queries.
+[Open](MSSQL/mssql.sql) sql file with MS SQL queries.
 
 ## PostgreSQL
 

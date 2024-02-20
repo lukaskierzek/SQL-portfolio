@@ -149,7 +149,7 @@ GO;
 
 WITH cte_avg_list_price_by_category (categoryId, avgForCategory) AS (
     SELECT category_id
-          ,avg(list_price)
+          ,AVG(list_price)
     FROM BikeStores.production.products
     GROUP BY category_id
 ) SELECT p.product_name

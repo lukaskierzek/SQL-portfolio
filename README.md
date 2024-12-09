@@ -4,9 +4,9 @@ Portfolio demonstrating my knowledge of sql
 
 ## MS SQL
 
-To demonstrate my MS SQL knowledge, I use
+To demonstrate my knowledge of MS SQL, I use
 the [bikestore](https://www.sqlservertutorial.net/sql-server-sample-database/) database.
-[Open](MSSQL/mssql.sql) sql file with MS SQL queries.
+[Open](MSSQL) MSSQL directory with MS SQL queries.
 
 ## PostgreSQL
 

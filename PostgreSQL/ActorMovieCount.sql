@@ -32,6 +32,9 @@ END
 $$;
 
 SELECT * from get_film_count_by_actor('Penelope', 'Guiness');
+
 SELECT * from get_film_count_by_actor('Penelope', null);
+
 SELECT * from get_film_count_by_actor(null, null);
+
 SELECT * from get_film_count_by_actor(null, 'Guiness');

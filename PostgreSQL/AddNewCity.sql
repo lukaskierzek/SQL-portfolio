@@ -2,40 +2,33 @@
 -- Adding a new city
 -- ===================================================================================================================
 
-DROP ROUTINE IF EXISTS add_new_city(VARCHAR, INT);
+DROP ROUTINE IF EXISTS add_new_city();
 
 CREATE OR REPLACE PROCEDURE add_new_city(
-    IN _city_name varchar,
-    IN _country_id int
+    IN _city_name VARCHAR,
+    IN _country_id INT
 )
 LANGUAGE plpgsql
 AS
 $$
-DECLARE
-    city_count    INTEGER;
-    country_count INTEGER;
 BEGIN
-    SELECT COUNT(*)
-    INTO city_count
-    FROM city
-    WHERE city.city = _city_name
-    AND city.country_id = _country_id;
-
-    SELECT COUNT(*)
-    INTO country_count
-    FROM country
-    WHERE country_id = _country_id;
-
-    IF city_count >= 1 THEN
+    IF EXISTS(
+        SELECT 1 FROM city c
+        WHERE c.city = _city_name AND c.country_id = _country_id
+    ) THEN
         RAISE EXCEPTION 'There is already a city named % in country with id %', _city_name, _country_id;
-    ELSIF country_count = 0 THEN
-        RAISE EXCEPTION 'There is no country with id %', _country_id;
-    ELSE
-        INSERT INTO city (city, country_id)
-        VALUES (_city_name, _country_id);
-        RAISE INFO 'Added city % for country id %', _city_name, _country_id;
-        COMMIT;
     END IF;
+
+    IF NOT EXISTS(
+        SELECT 1 FROM country co
+        WHERE co.country_id = _country_id
+    ) THEN
+        RAISE EXCEPTION 'There is no country with id %', _country_id;
+    END IF;
+
+    INSERT INTO city (city, country_id)
+    VALUES (_city_name, _country_id);
+    RAISE INFO 'Added city % for country id %', _city_name, _country_id;
 END;
 $$;
 
